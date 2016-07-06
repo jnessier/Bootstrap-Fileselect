@@ -1,5 +1,5 @@
 /*!
- * Bootstrap Fileselect v1.0
+ * Bootstrap Fileselect v1.1
  * https://github.com/Neoflow/Bootstrap-Fileselect
  *
  * Released under the MIT license
@@ -41,8 +41,7 @@
             language: false
         },
         init: function () {
-            this.config = $.extend({}, this.defaults, this.options, this.metadata);
-
+            this.config = this.loadConfig();
             this.translations = this.loadTranslation();
 
             this.$fileInput
@@ -81,6 +80,12 @@
             }
             this.$fileInput.val(null);
             return false;
+        },
+        loadConfig: function () {
+            this.config = $.extend({}, this.defaults, this.options, this.metadata);
+            if (typeof this.config.extensions === 'string') {
+                this.config.extensions = this.config.extensions.split(',');
+            }
         },
         loadTranslation: function () {
             var userLanguage = this.config.language || navigator.language || navigator.userLanguage,
