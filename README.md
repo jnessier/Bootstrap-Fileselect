@@ -16,6 +16,8 @@ below.
 </script>
 ```
 
+**Attention** Don't forget to load the JavaScript libraries of jQuery first
+
 ## Examples
 Check out the [demo page](https://rawgit.com/Neoflow/Bootstrap-Fileselect/master/demo/index.html)
 for a look and feel and  the documentation of the plugin.
