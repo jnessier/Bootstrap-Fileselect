@@ -4,8 +4,6 @@
  *
  * Released under the MIT license
  * https://github.com/Neoflow/Bootstrap-Fileselect/blob/master/LICENSE.md
- *
- * Copyright (c) 2016 Jonathan Nessier <jonathan.nessier@neoflow.ch>
  */
 (function (window, $) {
 
@@ -13,10 +11,10 @@
         this.$fileInput = $(fileInput);
         this.options = options;
         this.metadata = this.$fileInput.data();
-        this.$inputGroup = $('<div>', {class: "input-group"});
-        this.$inputGroupBtn = $('<label>', {class: 'input-group-btn'});
+        this.$inputGroup = $('<div>').addClass('input-group');
+        this.$inputGroupBtn = $('<label>').addClass('input-group-btn');
         this.$browseBtn = $('<span>');
-        this.$labelInput = $('<input>', {type: 'text', class: 'form-control', readyonly: true});
+        this.$labelInput = $('<input>').attr('type', 'text').attr('readonly', true).addClass('form-control');
         this.translations = {
             'en': {
                 'browse': 'Browse',
