@@ -1,0 +1,8 @@
+{
+    "name": "Bootstrap Fileselect",
+    "version": "1.0.0",
+    "keywords": ["file select", "input file", "form control", "bootstrap", "jquery"],
+    "author": "Jonathan Nessier, Neoflow",
+    "contributors": [],
+    "dependencies": {}
+}
