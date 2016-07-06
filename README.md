@@ -1,12 +1,8 @@
 # Bootstrap-Fileselect
 ## Introduction
-Every browser has a different design for file input fields, also
-known as file selects or upload form controls. And Twitter
-Bootstrap don't offers any components for this type of fields.
-
-But Bootstrap Fileselect is a small jQuery plugin, will help
-you, to get a the file input fields styled like the other form
-controls of Twitter Bootstrap.
+Bootstrap Fileselect is a jQuery plugin and gives you a bootstrap-styled form
+controls for file uploads, also know as file selects or file input fields, with
+some kind of validation support and customization.
 
 ## Installation
 Download the latest release [here](https://github.com/Neoflow/Bootstrap-Fileselect/releases) and use start using it like in the code example
