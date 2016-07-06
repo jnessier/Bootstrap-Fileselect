@@ -14,7 +14,7 @@ below.
 ```
 
 ## Examples
-Check out the [demo page](https://rawgit.com/Neoflow/Bootstrap-Fileselect/master/demo.html)
+Check out the [demo page](https://rawgit.com/Neoflow/Bootstrap-Fileselect/master/demo/index.html)
 for the documentation and a look and feel of the plugin
 
 ## Author
