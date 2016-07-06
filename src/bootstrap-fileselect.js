@@ -1,3 +1,12 @@
+/*!
+ * Bootstrap Fileselect
+ * https://github.com/Neoflow/Bootstrap-Fileselect
+ *
+ * Released under the MIT license
+ * https://github.com/select2/select2/blob/master/LICENSE.md
+ * 
+ * Copyright (c) 2016 Jonathan Nessier <jonathan.nessier@neoflow.ch>
+ */
 (function (window, $) {
 
     var Fileselect = function (fileInput, options) {
@@ -11,20 +20,27 @@
         this.translations = {
             'en': {
                 'browse': 'Browse',
-                'filelimit': 'Only [num] file(s) allowed'
+                'rules': {
+                    'limit': 'The number of uploadable files is limited to [num] file(s)',
+                    'filelimit': 'The files are restricted to following file extensions: [ext]'
+                }
             },
             'de': {
                 'browse': 'Durchsuchen',
-                'filelimit': 'Nur [num] Datei(en) erlaubt'
-            },
+                'rules': {
+                    'limit': 'Die Anzahl der hochgeladenen Dateien ist limitiert auf [num] Datei(en)',
+                    'extensions': 'Die Dateien sind eingeschränkt auf folgende Dateierweiterungen: [ext]',
+                }
+            }
         };
     };
     Fileselect.prototype = {
         defaults: {
             browseBtnClass: 'btn btn-primary',
-            browseIcon: '<i class="fa fa-fw fa-folder-open"></i>',
+            browseIcon: '<i class="glyphicon glyphicon-folder-open"></i>',
             limit: false,
-            extensions: ['jpeg']
+            extensions: false,
+            language: false
         },
         init: function () {
             this.config = $.extend({}, this.defaults, this.options, this.metadata);
@@ -48,54 +64,67 @@
                     .append(' &hellip;');
 
             if (this.config.browseIcon) {
-                this.$browseBtn.prepend(this.config.browseIcon + ' ');
+                this.$browseBtn.prepend(this.config.browseIcon, '&nbsp;');
             }
 
             this.$fileInput.on('change', $.proxy(this.changeEvent, this));
 
             return this;
         },
-        loadTranslation: function () {
-            var userLanguage = navigator.language || navigator.userLanguage;
-            if ($.inArray(userLanguage, ['en', 'de', 'fr']) === -1) {
-                userLanguage = 'en';
-            }
-            return this.translations[userLanguage];
-        },
         changeEvent: function (e) {
-
             var files = this.$fileInput[0].files,
                     label = $.map(files, function (file) {
                         return file.name;
                     }).join(', ');
 
-            if (this.config.limit) {
-                if (files.length > parseInt(this.config.limit)) {
-                    alert(this.translations.filelimit.replace('[num]', this.config.limit));
-                    this.$fileInput.val(null);
-                    return false;
-                }
+            if (this.validateLimit(files) && this.valiateExtensions(files)) {
+                this.$labelInput.val(label);
+                return true;
             }
+            this.$fileInput.val(null);
+            return false;
+        },
+        loadTranslation: function () {
+            var userLanguage = this.config.language || navigator.language || navigator.userLanguage,
+                    translatedLanguages = $.map(this.translations, function (translations, key) {
+                        return key;
+                    });
 
+            if ($.inArray(userLanguage, translatedLanguages) === -1) {
+                userLanguage = 'en';
+            }
+            return this.translations[userLanguage];
+        },
+        validateLimit: function (files) {
+            if (this.config.limit && files.length > parseInt(this.config.limit)) {
+                alert(this.translations.rules.limit.replace('[num]', this.config.limit));
+                return false;
+            }
+            return true;
+        },
+        valiateExtensions: function (files) {
+            var result = true;
             if (this.config.extensions) {
-                $.each(files, function (i, file) {
-                    if ((new RegExp('(' + this.config.extensions.join('|').replace(/\./g, '\\.') + ')$')).test(file) === false) {
-                        alert('this.translations.filelimit.replac');
-                        return false;
+                $.each(files, $.proxy(function (i, file) {
+                    var fileExtension = file.name.replace(/^.*\./, '').toLowerCase();
+                    if ($.inArray(fileExtension, this.config.extensions) === -1) {
+                        alert(this.translations.rules.extensions.replace('[ext]', this.config.extensions.join(', ')));
+                        result = false;
+                        return result;
                     }
-                    console.log(file);
-                });
+                }, this));
             }
-
-            this.$labelInput.val(label);
+            return result;
         }
     };
+
     Fileselect.defaults = Fileselect.prototype.defaults;
+
     $.fn.fileselect = function (options) {
         return this.each(function () {
             new Fileselect(this, options).init();
         });
-    }
-    ;
+    };
+
     window.Fileselect = Fileselect;
 })(window, jQuery);
