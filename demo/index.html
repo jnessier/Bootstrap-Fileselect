@@ -22,123 +22,179 @@
             .hljs {
                 background: none;
             }
+
+            p {
+                font-size: 16px;
+            }
+
+            section {
+                border-left: 5px solid #eee;
+                padding: 0 0 0 15px;
+            }
+
+            footer {
+
+            }
         </style>
 
     </head>
     <body>
-        <div class="container container-md">
+
+        <a href="https://github.com/Neoflow/Bootstrap-Fileselect" class="github-corner"><svg width="80" height="80" viewBox="0 0 250 250" style="fill:#151513; color:#fff; position: absolute; top: 0; border: 0; right: 0;"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+
+        <div class="container">
 
             <div class="page-header">
-                <h1>Bootstrap Fileselect</h1>
+                <h1>Bootstrap Fileselect <small>The jQuery replacement for file input fields</small></h1>
             </div>
+
+            <h2>Introduction</h2>
+            <section>
+                <p>
+                    Bootstrap Fileselect is a jQuery plugin and gives you a
+                    bootstrap-styled form controls for file uploads, also know as
+                    file selects or file input fields, with
+                    some kind of validation support and customization.
+                </p>
+            </section>
 
             <h2>Examples</h2>
             <h3>Basic</h3>
-            <div class="row">
-                <div class="col-md-6">
-                    <p>The plugin will replace the selected input field with a bootstrap-styled file-select inputfield to get the same designs like for the other form controls.</p>
-                    <input id="demo1" type="file" name="demo" />
-                    <script>
+            <section>
+                <div class="row">
+                    <div class="col-md-6">
+                        <p>
+                            Bootstrap fileselect will replace the browser-specific
+                            styled file input fields...
+                        </p>
+                        <div class="form-group">
+                            <input type="file" name="demo" />
+                        </div>
+
+                        <p>...to bootstrap-styled form controls.</p>
+                        <div class="form-group">
+                            <input id="demo1" type="file" name="demo" />
+                        </div>
+                        <script>
             $('#demo1').fileselect();
-                    </script>
-                </div>
-                <div class="col-md-6">
-                    <pre><code class="html">&lt;input id=&quot;demo1&quot; type=&quot;file&quot; name=&quot;demo&quot; /&gt;
+                        </script>
+                    </div>
+                    <div class="col-md-6">
+                        <pre><code class="html">&lt;input id=&quot;demo1&quot; type=&quot;file&quot; name=&quot;demo&quot; /&gt;
 &lt;script&gt;
     $('#demo1').fileselect();
 &lt;/script&gt;</code></pre>
+                    </div>
                 </div>
-            </div>
+            </section>
 
             <h3>Multiple</h3>
-            <div class="row">
-                <div class="col-md-6">
-                    <p>Same behaviour as mentioned in the basic example, but you can choose multiple files now.</p>
-                    <input id="demo2" type="file" name="demo" multiple />
-                    <script>
-                        $('#demo2').fileselect();
-                    </script>
-                </div>
-                <div class="col-md-6">
-                    <pre><code>&lt;input id=&quot;demo2&quot; type=&quot;file&quot; name=&quot;demo&quot; multiple /&gt;
+            <section>
+                <div class="row">
+                    <div class="col-md-6">
+                        <p>Same behaviour as mentioned in the basic example, but you can choose multiple files now.</p>
+                        <div class="form-group">
+                            <input id="demo2" type="file" name="demo" multiple />
+                        </div>
+                        <script>
+                            $('#demo2').fileselect();
+                        </script>
+                    </div>
+                    <div class="col-md-6">
+                        <pre><code class="html">&lt;input id=&quot;demo2&quot; type=&quot;file&quot; name=&quot;demo&quot; multiple /&gt;
 &lt;script&gt;
     $('#demo2').fileselect();
 &lt;/script&gt;</code></pre>
+                    </div>
                 </div>
-            </div>
-
+            </section>
             <h3>Validation</h3>
-            <div class="row">
-                <div class="col-md-6">
-                    <p>You can set two types of validation rules:</p>
-                    <ul>
-                        <li>Limit the number of selectable files</li>
-                        <li>Restrict the allowed file extensions</li>
-                    </ul>
-                    <input id="demo3" type="file" name="demo" multiple />
-                    <script>
-                        $('#demo3').fileselect({
-                            limit: 3, // default: false, no limitation
-                            extensions: ['jpeg', 'jpg', 'png'] // default: false, all extensions allowed
-                        });
-                    </script>
-                </div>
-                <div class="col-md-6">
-                    <pre><code>&lt;input id=&quot;demo3&quot; type=&quot;file&quot; name=&quot;demo&quot; multiple /&gt;
+            <section>
+                <div class="row">
+                    <div class="col-md-6">
+                        <p>You can set two types of validation rules:</p>
+                        <ul>
+                            <li>Limit the number of selectable files</li>
+                            <li>Restrict the allowed file extensions</li>
+                        </ul>
+                        <div class="form-group">
+                            <input id="demo3" type="file" name="demo" multiple />
+                        </div>
+                        <script>
+                            $('#demo3').fileselect({
+                                limit: 3, // default: false, no limitation
+                                extensions: ['jpeg', 'jpg', 'png'] // default: false, all extensions allowed
+                            });
+                        </script>
+                    </div>
+                    <div class="col-md-6">
+                        <pre><code class="html">&lt;input id=&quot;demo3&quot; type=&quot;file&quot; name=&quot;demo&quot; multiple /&gt;
 &lt;script&gt;
     $('#demo3').fileselect({
         limit: 3, // default: false, no limitation
         extensions: ['jpeg', 'jpg', 'png'] // default: false, all extensions allowed
     });
 &lt;/script&gt;</code></pre>
+                    </div>
                 </div>
-            </div>
+            </section>
 
             <h3>Styling</h3>
-            <div class="row">
-                <div class="col-md-6">
-                    <p>You can define the css class and icon of the browse button.</p>
-                    <input id="demo4" type="file" name="demo" />
-                    <script>
-                        $('#demo4').fileselect({
-                            browseBtnClass: 'btn btn-danger', // default: btn btn-primary
-                            browseIcon: '<i class="glyphicon glyphicon-hdd"></i>' // default: <i class="glyphicon glyphicon-folder-open"></i>
-                        });
-                    </script>
-                </div>
-                <div class="col-md-6">
-                    <pre><code>&lt;input id=&quot;demo4&quot; type=&quot;file&quot; name=&quot;demo&quot; multiple /&gt;
+            <section>
+                <div class="row">
+                    <div class="col-md-6">
+                        <p>You can define the css class and icon of the browse button.</p>
+                        <div class="form-group">
+                            <input id="demo4" type="file" name="demo" />
+                        </div>
+                        <script>
+                            $('#demo4').fileselect({
+                                browseBtnClass: 'btn btn-danger', // default: btn btn-primary
+                                browseIcon: '<i class="glyphicon glyphicon-hdd"></i>' // default: <i class="glyphicon glyphicon-folder-open"></i>
+                            });
+                        </script>
+                    </div>
+                    <div class="col-md-6">
+                        <pre><code class="html">&lt;input id=&quot;demo4&quot; type=&quot;file&quot; name=&quot;demo&quot; multiple /&gt;
 &lt;script&gt;
     $('#demo4').fileselect({
         browseBtnClass: 'btn btn-danger', // default: btn btn-primary
         browseIcon: '&lt;i class=&quot;glyphicon glyphicon-hdd&quot;&gt;&lt;/i&gt;' // default: &lt;i class=&quot;glyphicon glyphicon-folder-open&quot;&gt;&lt;/i&gt;
     });
 &lt;/script&gt;</code></pre>
+                    </div>
                 </div>
-            </div>
+            </section>
 
             <h3>Translations</h3>
-            <div class="row">
-                <div class="col-md-6">
-                    <p>The plugin will use the browser language, but you can also define a language. If the defined language isn't supported, then the plugin will fallback to the english translations.</p>
-                    <input id="demo5" type="file" name="demo" />
-                    <script>
-                        $('#demo5').fileselect({
-                            language: 'de' // default: false, browser language
-                        });
-                    </script>
-                </div>
-                <div class="col-md-6">
-                    <pre><code>&lt;input id=&quot;demo5&quot; type=&quot;file&quot; name=&quot;demo&quot; multiple /&gt;
+            <section>
+                <div class="row">
+                    <div class="col-md-6">
+                        <p>The plugin will use the browser language, but you can also define a language. If the defined language isn't supported, then the plugin will fallback to the english translations.</p>
+                        <div class="form-group">
+                            <input id="demo5" type="file" name="demo" />
+                        </div>
+                        <script>
+                            $('#demo5').fileselect({
+                                language: 'de' // default: false, browser language
+                            });
+                        </script>
+                    </div>
+                    <div class="col-md-6">
+                        <pre><code class="html">&lt;input id=&quot;demo5&quot; type=&quot;file&quot; name=&quot;demo&quot; multiple /&gt;
 &lt;script&gt;
     $('#demo5').fileselect({
         language: 'de' // default: false, browser language
     });
 &lt;/script&gt;</code></pre>
+                    </div>
                 </div>
-            </div>
+            </section>
 
-        </div>
-
+            <footer>
+                <hr />
+                <p class="small">Copyright © 2016 Jonathan Nessier, <a href="https://www.neoflow.ch">Neoflow</a> | The MIT License (MIT)</p>
+            </footer>
+        </div><!-- /.container -->
     </body>
 </html>
