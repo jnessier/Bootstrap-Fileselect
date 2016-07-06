@@ -7,15 +7,20 @@ field with a great bootstrap-styled from control and will help you to get a
 great user exprience!
 
 ## Installation
-Download the newest release here and use it in your html code like the example
+Download the first release v1.0.0 [here](https://github.com/Neoflow/Bootstrap-Fileselect/releases) and use start using it like in the code example
 below.
 ```html
 <script src="path/to/js/bootstrap-fileselect.js"></script>
+<script>
+$(function() {
+    $('input:file').fileselect();
+});
+</script>
 ```
 
 ## Examples
 Check out the [demo page](https://rawgit.com/Neoflow/Bootstrap-Fileselect/master/demo/index.html)
-for the documentation and a look and feel of the plugin
+for a look and feel and  the documentation of the plugin.
 
 ## Author
 Jonathan Nessier, [Neoflow](https://www.neoflow.ch)
