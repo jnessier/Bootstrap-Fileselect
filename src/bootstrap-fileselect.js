@@ -26,7 +26,7 @@
             'de': {
                 'browse': 'Durchsuchen',
                 'rules': {
-                    'limit': 'Die Anzahl der hochgeladenen Dateien ist limitiert auf [num] Datei(en)',
+                    'limit': 'Die Anzahl der hochladbaren Dateien ist limitiert auf [num] Datei(en)',
                     'extensions': 'Die Dateien sind eingeschränkt auf folgende Dateierweiterungen: [ext]',
                 }
             }
@@ -62,7 +62,7 @@
                     .append(' &hellip;');
 
             if (this.config.browseIcon) {
-                this.$browseBtn.prepend(this.config.browseIcon, '&nbsp;');
+                this.$browseBtn.prepend(this.config.browseIcon, '&nbsp;&nbsp;');
             }
 
             this.$fileInput.on('change', $.proxy(this.changeEvent, this));
