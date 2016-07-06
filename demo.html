@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Bootstrap Fileselect Examples</title>
+
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <link href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/css/bootstrap.min.css" type="text/css" rel="stylesheet" />
+        <link href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.4.0/styles/github.min.css" type="text/css" rel="stylesheet" >
+
+        <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/js/bootstrap.min.js"></script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.4.0/highlight.min.js"></script>
+        <script>
+            hljs.initHighlightingOnLoad();
+        </script>
+
+        <script src="src/bootstrap-fileselect.js"></script>
+
+        <style>
+            .hljs {
+                background: none;
+            }
+        </style>
+
+    </head>
+    <body>
+        <div class="container container-md">
+
+            <div class="page-header">
+                <h1>Bootstrap Fileselect</h1>
+            </div>
+
+            <h2>Examples</h2>
+            <h3>Basic</h3>
+            <div class="row">
+                <div class="col-md-6">
+                    <p>The plugin will replace the selected input field with a bootstrap-styled file-select inputfield to get the same designs like for the other form controls.</p>
+                    <input id="demo1" type="file" name="demo" />
+                    <script>
+            $('#demo1').fileselect();
+                    </script>
+                </div>
+                <div class="col-md-6">
+                    <pre><code class="html">&lt;input id=&quot;demo1&quot; type=&quot;file&quot; name=&quot;demo&quot; /&gt;
+&lt;script&gt;
+    $('#demo1').fileselect();
+&lt;/script&gt;</code></pre>
+                </div>
+            </div>
+
+            <h3>Multiple</h3>
+            <div class="row">
+                <div class="col-md-6">
+                    <p>Same behaviour as mentioned in the basic example, but you can choose multiple files now.</p>
+                    <input id="demo2" type="file" name="demo" multiple />
+                    <script>
+                        $('#demo2').fileselect();
+                    </script>
+                </div>
+                <div class="col-md-6">
+                    <pre><code>&lt;input id=&quot;demo2&quot; type=&quot;file&quot; name=&quot;demo&quot; multiple /&gt;
+&lt;script&gt;
+    $('#demo2').fileselect();
+&lt;/script&gt;</code></pre>
+                </div>
+            </div>
+
+            <h3>Validation</h3>
+            <div class="row">
+                <div class="col-md-6">
+                    <p>You can set two types of validation rules:</p>
+                    <ul>
+                        <li>Limit the number of selectable files</li>
+                        <li>Restrict the allowed file extensions</li>
+                    </ul>
+                    <input id="demo3" type="file" name="demo" multiple />
+                    <script>
+                        $('#demo3').fileselect({
+                            limit: 3, // default: false, no limitation
+                            extensions: ['jpeg', 'jpg', 'png'] // default: false, all extensions allowed
+                        });
+                    </script>
+                </div>
+                <div class="col-md-6">
+                    <pre><code>&lt;input id=&quot;demo3&quot; type=&quot;file&quot; name=&quot;demo&quot; multiple /&gt;
+&lt;script&gt;
+    $('#demo3').fileselect({
+        limit: 3, // default: false, no limitation
+        extensions: ['jpeg', 'jpg', 'png'] // default: false, all extensions allowed
+    });
+&lt;/script&gt;</code></pre>
+                </div>
+            </div>
+
+            <h3>Styling</h3>
+            <div class="row">
+                <div class="col-md-6">
+                    <p>You can define the css class and icon of the browse button.</p>
+                    <input id="demo4" type="file" name="demo" />
+                    <script>
+                        $('#demo4').fileselect({
+                            browseBtnClass: 'btn btn-danger', // default: btn btn-primary
+                            browseIcon: '<i class="glyphicon glyphicon-hdd"></i>' // default: <i class="glyphicon glyphicon-folder-open"></i>
+                        });
+                    </script>
+                </div>
+                <div class="col-md-6">
+                    <pre><code>&lt;input id=&quot;demo4&quot; type=&quot;file&quot; name=&quot;demo&quot; multiple /&gt;
+&lt;script&gt;
+    $('#demo4').fileselect({
+        browseBtnClass: 'btn btn-danger', // default: btn btn-primary
+        browseIcon: '&lt;i class=&quot;glyphicon glyphicon-hdd&quot;&gt;&lt;/i&gt;' // default: &lt;i class=&quot;glyphicon glyphicon-folder-open&quot;&gt;&lt;/i&gt;
+    });
+&lt;/script&gt;</code></pre>
+                </div>
+            </div>
+
+            <h3>Translations</h3>
+            <div class="row">
+                <div class="col-md-6">
+                    <p>The plugin will use the browser language, but you can also define a language. If the defined language isn't supported, then the plugin will fallback to the english translations.</p>
+                    <input id="demo5" type="file" name="demo" />
+                    <script>
+                        $('#demo5').fileselect({
+                            language: 'de' // default: false, browser language
+                        });
+                    </script>
+                </div>
+                <div class="col-md-6">
+                    <pre><code>&lt;input id=&quot;demo5&quot; type=&quot;file&quot; name=&quot;demo&quot; multiple /&gt;
+&lt;script&gt;
+    $('#demo5').fileselect({
+        language: 'de' // default: false, browser language
+    });
+&lt;/script&gt;</code></pre>
+                </div>
+            </div>
+
+        </div>
+
+    </body>
+</html>
