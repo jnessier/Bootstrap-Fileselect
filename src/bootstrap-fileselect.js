@@ -82,10 +82,11 @@
             return false;
         },
         loadConfig: function () {
-            this.config = $.extend({}, this.defaults, this.options, this.metadata);
-            if (typeof this.config.extensions === 'string') {
-                this.config.extensions = this.config.extensions.split(',');
+            var config = $.extend({}, this.defaults, this.options, this.metadata);
+            if (typeof config.extensions === 'string') {
+                config.extensions = config.extensions.split(',');
             }
+            return config;
         },
         loadTranslation: function () {
             var userLanguage = this.config.language || navigator.language || navigator.userLanguage,
