@@ -1,10 +1,10 @@
 /*!
- * Bootstrap Fileselect
+ * Bootstrap Fileselect v1.0
  * https://github.com/Neoflow/Bootstrap-Fileselect
  *
  * Released under the MIT license
- * https://github.com/select2/select2/blob/master/LICENSE.md
- * 
+ * https://github.com/Neoflow/Bootstrap-Fileselect/blob/master/LICENSE.md
+ *
  * Copyright (c) 2016 Jonathan Nessier <jonathan.nessier@neoflow.ch>
  */
 (function (window, $) {
