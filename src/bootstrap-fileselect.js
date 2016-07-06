@@ -23,7 +23,8 @@
         defaults: {
             browseBtnClass: 'btn btn-primary',
             browseIcon: '<i class="fa fa-fw fa-folder-open"></i>',
-            limit: false
+            limit: false,
+            extensions: ['jpeg']
         },
         init: function () {
             this.config = $.extend({}, this.defaults, this.options, this.metadata);
@@ -75,6 +76,17 @@
                     return false;
                 }
             }
+
+            if (this.config.extensions) {
+                $.each(files, function (i, file) {
+                    if ((new RegExp('(' + this.config.extensions.join('|').replace(/\./g, '\\.') + ')$')).test(file) === false) {
+                        alert('this.translations.filelimit.replac');
+                        return false;
+                    }
+                    console.log(file);
+                });
+            }
+
             this.$labelInput.val(label);
         }
     };
