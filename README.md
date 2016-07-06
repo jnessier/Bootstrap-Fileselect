@@ -7,7 +7,7 @@ field with a great bootstrap-styled from control and will help you to get a
 great user exprience!
 
 ## Installation
-Download the first release v1.0.0 [here](https://github.com/Neoflow/Bootstrap-Fileselect/releases) and use start using it like in the code example
+Download the latest release [here](https://github.com/Neoflow/Bootstrap-Fileselect/releases) and use start using it like in the code example
 below.
 ```html
 <script src="path/to/js/bootstrap-fileselect.js"></script>
