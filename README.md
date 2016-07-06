@@ -12,9 +12,9 @@ below.
 ```html
 <script src="path/to/js/bootstrap-fileselect.js"></script>
 <script>
-$(function() {
-    $('input:file').fileselect();
-});
+    $(function() {
+        $('input:file').fileselect();
+    });
 </script>
 ```
 
