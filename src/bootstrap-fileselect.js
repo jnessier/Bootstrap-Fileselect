@@ -40,7 +40,7 @@
             browseIcon: '<i class="glyphicon glyphicon-folder-open"></i>',
             limit: false,
             extensions: false,
-            allowedFileSize: 2 * 1024 * 1024,
+            allowedFileSize: false,
             allowedFileExtensions: false,
             allowedNumberOfFiles: false,
             language: false
@@ -129,10 +129,8 @@
             var result = true;
             if (this.config.allowedFileSize) {
                 $.each(files, $.proxy(function (i, file) {
-                    console.log(file.size);
-                    console.log(this.config.allowedFileSize);
                     if (file.size > this.config.allowedFileSize) {
-                        alert(this.translations.rules.fileSize.replace('[size]', this.config.allowedFileSize / 1024 / 1024 + 'MB'));
+                        alert(this.translations.rules.fileSize.replace('[size]', Math.round(this.config.allowedFileSize / 1024 / 1024) + 'MB'));
                         result = false;
                         return result;
                     }
