@@ -122,8 +122,9 @@
                         </div>
                         <script>
                             $('#demo3').fileselect({
-                                limit: 3, // default: false, no limitation
-                                extensions: ['jpeg', 'jpg', 'png'] // default: false, all extensions allowed
+                                allowedNumberOfFiles: 3, // default: false, no limitation
+                                allowedFileExtensions: ['zip'], // default: false, all extensions allowed
+                                allowedFileSize: 4194304 // default: 2097152, 2MB
                             });
                         </script>
                     </div>
@@ -131,8 +132,9 @@
                         <pre><code class="html">&lt;input id=&quot;demo3&quot; type=&quot;file&quot; name=&quot;demo&quot; multiple /&gt;
 &lt;script&gt;
     $('#demo3').fileselect({
-        limit: 3, // default: false, no limitation
-        extensions: ['jpeg', 'jpg', 'png'] // default: false, all extensions allowed
+        allowedNumberOfFiles: 3, // default: false, no limitation
+        allowedFileExtensions: ['zip'] // default: false, all extensions allowed
+        allowedFileSize: 4194304 // default: 2097152, 2MB
     });
 &lt;/script&gt;</code></pre>
                     </div>

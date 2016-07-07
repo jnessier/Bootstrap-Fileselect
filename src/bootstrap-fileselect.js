@@ -1,5 +1,5 @@
 /*!
- * Bootstrap Fileselect v1.1
+ * Bootstrap Fileselect v1.2
  * https://github.com/Neoflow/Bootstrap-Fileselect
  *
  * Released under the MIT license
@@ -19,15 +19,17 @@
             'en': {
                 'browse': 'Browse',
                 'rules': {
-                    'limit': 'The number of uploadable files is limited to [num] file(s)',
-                    'filelimit': 'The files are restricted to following file extensions: [ext]'
+                    'numberOfFiles': 'The number of uploadable files is limited to [num] file(s)',
+                    'fileExtensions': 'The files are restricted to following file extensions: [ext]',
+                    'fileSize': 'The file size is limited to [size]',
                 }
             },
             'de': {
                 'browse': 'Durchsuchen',
                 'rules': {
-                    'limit': 'Die Anzahl der hochladbaren Dateien ist limitiert auf [num] Datei(en)',
-                    'extensions': 'Die Dateien sind eingeschränkt auf folgende Dateierweiterungen: [ext]',
+                    'numberOfFiles': 'Die Anzahl der hochladbaren Dateien ist limitiert auf [num] Datei(en)',
+                    'fileExtensions': 'Die Dateien sind eingeschränkt auf folgende Dateierweiterungen: [ext]',
+                    'fileSize': 'Die Grösse ist eingeschränkt auf [size] pro Datei',
                 }
             }
         };
@@ -38,6 +40,9 @@
             browseIcon: '<i class="glyphicon glyphicon-folder-open"></i>',
             limit: false,
             extensions: false,
+            allowedFileSize: 2 * 1024 * 1024,
+            allowedFileExtensions: false,
+            allowedNumberOfFiles: false,
             language: false
         },
         init: function () {
@@ -74,7 +79,7 @@
                         return file.name;
                     }).join(', ');
 
-            if (this.validateLimit(files) && this.valiateExtensions(files)) {
+            if (this.validateNumberOfFiles(files) && this.valiateFileExtensions(files) && this.validateFileSize(files)) {
                 this.$labelInput.val(label);
                 return true;
             }
@@ -99,20 +104,35 @@
             }
             return this.translations[userLanguage];
         },
-        validateLimit: function (files) {
-            if (this.config.limit && files.length > parseInt(this.config.limit)) {
-                alert(this.translations.rules.limit.replace('[num]', this.config.limit));
+        validateNumberOfFiles: function (files) {
+            if (this.config.allowedNumberOfFiles && files.length > parseInt(this.config.allowedNumberOfFiles)) {
+                alert(this.translations.rules.allowedNumberOfFiles.replace('[num]', this.config.allowedNumberOfFiles));
                 return false;
             }
             return true;
         },
-        valiateExtensions: function (files) {
+        valiateFileExtensions: function (files) {
             var result = true;
-            if (this.config.extensions) {
+            if (this.config.allowedFileExtensions) {
                 $.each(files, $.proxy(function (i, file) {
                     var fileExtension = file.name.replace(/^.*\./, '').toLowerCase();
-                    if ($.inArray(fileExtension, this.config.extensions) === -1) {
-                        alert(this.translations.rules.extensions.replace('[ext]', this.config.extensions.join(', ')));
+                    if ($.inArray(fileExtension, this.config.allowedFileExtensions) === -1) {
+                        alert(this.translations.rules.fileExtensions.replace('[ext]', this.config.allowedFileExtensions.join(', ')));
+                        result = false;
+                        return result;
+                    }
+                }, this));
+            }
+            return result;
+        },
+        validateFileSize: function (files) {
+            var result = true;
+            if (this.config.allowedFileSize) {
+                $.each(files, $.proxy(function (i, file) {
+                    console.log(file.size);
+                    console.log(this.config.allowedFileSize);
+                    if (file.size > this.config.allowedFileSize) {
+                        alert(this.translations.rules.fileSize.replace('[size]', this.config.allowedFileSize / 1024 / 1024 + 'MB'));
                         result = false;
                         return result;
                     }
