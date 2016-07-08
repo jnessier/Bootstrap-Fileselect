@@ -106,7 +106,7 @@
         },
         validateNumberOfFiles: function (files) {
             if (this.config.allowedNumberOfFiles && files.length > parseInt(this.config.allowedNumberOfFiles)) {
-                alert(this.translations.rules.allowedNumberOfFiles.replace('[num]', this.config.allowedNumberOfFiles));
+                alert(this.translations.rules.numberOfFiles.replace('[num]', this.config.allowedNumberOfFiles));
                 return false;
             }
             return true;
