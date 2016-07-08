@@ -1,5 +1,5 @@
 /*!
- * Bootstrap Fileselect v1.2.1
+ * Bootstrap Fileselect v1.2.2
  * https://github.com/Neoflow/Bootstrap-Fileselect
  *
  * Released under the MIT license
