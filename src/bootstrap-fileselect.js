@@ -1,5 +1,5 @@
 /*!
- * Bootstrap Fileselect v1.2
+ * Bootstrap Fileselect v1.2.1
  * https://github.com/Neoflow/Bootstrap-Fileselect
  *
  * Released under the MIT license
@@ -88,8 +88,8 @@
         },
         loadConfig: function () {
             var config = $.extend({}, this.defaults, this.options, this.metadata);
-            if (typeof config.extensions === 'string') {
-                config.extensions = config.extensions.split(',');
+            if (typeof config.allowedFileExtensions === 'string') {
+                config.allowedFileExtensions = config.allowedFileExtensions.split(',');
             }
             return config;
         },
