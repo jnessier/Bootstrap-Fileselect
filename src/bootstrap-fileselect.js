@@ -1,5 +1,5 @@
 /*!
- * Bootstrap Fileselect v1.3
+ * Bootstrap Fileselect v1.3.1
  * https://github.com/Neoflow/Bootstrap-Fileselect
  *
  * Released under the MIT license
@@ -58,7 +58,8 @@
 
             this.$inputGroupBtn
                     .append(this.$browseBtn)
-                    .append(this.$fileInput);
+                    .append(this.$fileInput)
+                    .css('margin-bottom', 0);
 
             this.$browseBtn
                     .addClass(this.config.browseBtnClass)
@@ -66,7 +67,7 @@
                     .append(' &hellip;');
 
             if (this.config.browseIcon) {
-                this.$browseBtn.prepend(this.config.browseIcon, '&nbsp;&nbsp;');
+                this.$browseBtn.prepend(this.config.browseIcon);
             }
 
             this.$fileInput.on('change', $.proxy(this.changeEvent, this));
