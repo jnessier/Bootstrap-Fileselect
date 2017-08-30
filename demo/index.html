@@ -243,10 +243,14 @@
                         </script>
                     </div>
                     <div class="col-md-7">
-                        <pre><code class="html">&lt;input id=&quot;demo5&quot; type=&quot;file&quot; name=&quot;demo&quot; multiple /&gt;
+                        <pre><code class="html">&lt;input id=&quot;demo6&quot; type=&quot;file&quot; name=&quot;demo&quot; /&gt;
 &lt;script&gt;
-    $('#demo5').fileselect({
-        language: 'de' // default: false, browser language
+    $('#demo6').fileselect({
+        allowedFileExtensions: ['xyz'],
+        validationCallback: function (m, type, instance) {
+            instance.$inputGroup
+                    .after('&lt;span class=&quot;small text-danger&quot;&gt;' + m + '&lt;/span&gt;');
+        }
     });
 &lt;/script&gt;</code></pre>
                     </div>
