@@ -1,0 +1,9 @@
+/*!
+ * Bootstrap Fileselect v{VERSION}
+ * https://github.com/Neoflow/Bootstrap-Fileselect
+ *
+ * Copyright 2016-{YEAR} Neoflow
+ *
+ * Released under the MIT license
+ * https://github.com/Neoflow/Bootstrap-Fileselect/blob/master/LICENSE.md
+ */

@@ -1,3 +1,13 @@
+/*!
+ * Bootstrap Fileselect v1.4.0
+ * https://github.com/Neoflow/Bootstrap-Fileselect
+ *
+ * Copyright 2016-2017 Neoflow
+ *
+ * Released under the MIT license
+ * https://github.com/Neoflow/Bootstrap-Fileselect/blob/master/LICENSE.md
+ */
+
 (function (window, $) {
 
     var Fileselect = function (fileInput, options) {

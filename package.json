@@ -1,8 +1,23 @@
 {
-    "name": "Bootstrap Fileselect",
-    "version": "1.0.0",
-    "keywords": ["file select", "input file", "form control", "bootstrap", "jquery"],
-    "author": "Jonathan Nessier, Neoflow",
+    "name": "bootstrap-fileselect",
+    "version": "1.4.0",
+    "keywords": [
+        "file select",
+        "input file",
+        "form control",
+        "bootstrap",
+        "jquery"
+    ],
+    "author": "Neoflow",
+    "license": "MIT",
     "contributors": [],
+    "devDependencies": {
+        "gulp": "^3.9.1",
+        "gulp-util": "^3.0.8",
+        "gulp-inject-string": "^1.1.0",
+        "gulp-uglify-es": "^0.1.3",
+        "gulp-rename": "^1.2.2",
+        "run-sequence": "^2.1.0"
+    },
     "dependencies": {}
 }
