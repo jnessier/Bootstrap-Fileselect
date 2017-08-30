@@ -28,4 +28,4 @@ for a look and feel and  the documentation of the plugin.
 
 ## Author
 Jonathan Nessier, [Neoflow](https://www.neoflow.ch)
-Copyright © 2016 Jonathan Nessier, [Neoflow](https://www.neoflow.ch) | The MIT License (MIT)
+Copyright © 2016-2017 [Neoflow](https://www.neoflow.ch) | Licensed under MIT
