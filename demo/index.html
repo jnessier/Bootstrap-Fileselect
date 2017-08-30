@@ -136,10 +136,11 @@
                 </h3>
                 <div class="row">
                     <div class="col-md-5">
-                        <p>You can set two types of validation rules:</p>
+                        <p>You can set 3 types of validation rules:</p>
                         <ul>
-                            <li>Limit the number of selectable files</li>
+                            <li>Limit the number of uploadable files</li>
                             <li>Restrict the allowed file extensions</li>
+                            <li>Restrict the allowed file size</li>
                         </ul>
                         <div class="form-group">
                             <input id="demo3" type="file" name="demo" multiple />
@@ -172,14 +173,13 @@
                 </h3>
                 <div class="row">
                     <div class="col-md-5">
-                        <p>You can define the css class and icon of the browse button.</p>
+                        <p>You can define the css class(es) of the browse button.</p>
                         <div class="form-group">
                             <input id="demo4" type="file" name="demo" />
                         </div>
                         <script>
                             $('#demo4').fileselect({
                                 browseBtnClass: 'btn btn-danger', // default: btn btn-primary
-                                browseIcon: '<i class="glyphicon glyphicon-hdd"></i>' // default: <i class="glyphicon glyphicon-folder-open"></i>
                             });
                         </script>
                     </div>
