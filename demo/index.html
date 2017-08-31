@@ -24,11 +24,6 @@
                 background: none;
             }
 
-            h1 {
-
-            }
-
-
             p {
                 font-size: 16px;
             }
@@ -45,10 +40,6 @@
 
             section h3 {
                 margin-top: 0;
-            }
-
-            footer {
-
             }
 
             pre {
@@ -81,7 +72,7 @@
                     Basic
                 </h3>
                 <div class="row">
-                    <div class="col-md-5">
+                    <div class="col-md-6">
                         <p>
                             Bootstrap fileselect will replace the browser-specific
                             styled file input fields...
@@ -98,7 +89,7 @@
             $('#demo1').fileselect();
                         </script>
                     </div>
-                    <div class="col-md-7">
+                    <div class="col-md-6">
                         <pre><code class="html">&lt;input id=&quot;demo1&quot; type=&quot;file&quot; name=&quot;demo&quot; /&gt;
 &lt;script&gt;
     $('#demo1').fileselect();
@@ -112,7 +103,7 @@
                     Multiple
                 </h3>
                 <div class="row">
-                    <div class="col-md-5">
+                    <div class="col-md-6">
                         <p>Same behaviour as mentioned in the basic example, but you can choose multiple files now.</p>
                         <div class="form-group">
                             <input id="demo2" type="file" name="demo" multiple />
@@ -121,7 +112,7 @@
                             $('#demo2').fileselect();
                         </script>
                     </div>
-                    <div class="col-md-7">
+                    <div class="col-md-6">
                         <pre><code class="html">&lt;input id=&quot;demo2&quot; type=&quot;file&quot; name=&quot;demo&quot; multiple /&gt;
 &lt;script&gt;
     $('#demo2').fileselect();
@@ -135,7 +126,7 @@
                     Validation
                 </h3>
                 <div class="row">
-                    <div class="col-md-5">
+                    <div class="col-md-6">
                         <p>You can set 3 types of validation rules:</p>
                         <ul>
                             <li>Limit the number of uploadable files</li>
@@ -153,7 +144,7 @@
                             });
                         </script>
                     </div>
-                    <div class="col-md-7">
+                    <div class="col-md-6">
                         <pre><code class="html">&lt;input id=&quot;demo3&quot; type=&quot;file&quot; name=&quot;demo&quot; multiple /&gt;
 &lt;script&gt;
     $('#demo3').fileselect({
@@ -172,7 +163,7 @@
                     Styling
                 </h3>
                 <div class="row">
-                    <div class="col-md-5">
+                    <div class="col-md-6">
                         <p>You can define the css class(es) of the browse button.</p>
                         <div class="form-group">
                             <input id="demo4" type="file" name="demo" />
@@ -183,7 +174,7 @@
                             });
                         </script>
                     </div>
-                    <div class="col-md-7">
+                    <div class="col-md-6">
                         <pre><code class="html">&lt;input id=&quot;demo4&quot; type=&quot;file&quot; name=&quot;demo&quot; multiple /&gt;
 &lt;script&gt;
     $('#demo4').fileselect({
@@ -200,7 +191,7 @@
                     Translations
                 </h3>
                 <div class="row">
-                    <div class="col-md-5">
+                    <div class="col-md-6">
                         <p>The plugin will use the browser language, but you can also define a language. If the defined language isn't supported, then the plugin will fallback to the english translations.</p>
                         <div class="form-group">
                             <input id="demo5" type="file" name="demo" />
@@ -208,10 +199,12 @@
                         <script>
                             $('#demo5').fileselect({
                                 language: 'de' // default: false, browser language
+                            }).on('bs.fs.changed', function (e, instance) {
+                                console.log(instance);
                             });
                         </script>
                     </div>
-                    <div class="col-md-7">
+                    <div class="col-md-6">
                         <pre><code class="html">&lt;input id=&quot;demo5&quot; type=&quot;file&quot; name=&quot;demo&quot; multiple /&gt;
 &lt;script&gt;
     $('#demo5').fileselect({
@@ -227,7 +220,7 @@
                     Validation callback
                 </h3>
                 <div class="row">
-                    <div class="col-md-5">
+                    <div class="col-md-6">
                         <p>Define your custom validation callback if you don't want to get an alert message..</p>
                         <div class="form-group">
                             <input id="demo6" type="file" name="demo" />
@@ -242,7 +235,7 @@
                             });
                         </script>
                     </div>
-                    <div class="col-md-7">
+                    <div class="col-md-6">
                         <pre><code class="html">&lt;input id=&quot;demo6&quot; type=&quot;file&quot; name=&quot;demo&quot; /&gt;
 &lt;script&gt;
     $('#demo6').fileselect({
@@ -252,6 +245,54 @@
                     .after('&lt;span class=&quot;small text-danger&quot;&gt;' + m + '&lt;/span&gt;');
         }
     });
+&lt;/script&gt;</code></pre>
+                    </div>
+                </div>
+            </section>
+
+            <section>
+                <h3>
+                    Events
+                </h3>
+                <div class="row">
+                    <div class="col-md-6">
+                        <p>Bootstrap Fileselect has more than 5 events for customized event listeners:</p>
+                        <ul>
+                            <li>
+                                Before (<code>bs.fs.validate</code>) and after (<code>bs.fs.validated</code>) each validation
+                            </li>
+                            <li>
+                                Before (<code>bs.fs.file-size-validate</code>) and after (<code>bs.fs.file-size-validated</code>) file size validation
+                            </li>
+                            <li>
+                                Before (<code>bs.fs.number-of-files-validate</code>) and after (<code>bs.fs.number-of-files-validated</code>) number of files validation
+                            </li>
+                            <li>
+                                Before (<code>bs.fs.file-extensions-validate</code>) and after (<code>bs.fs.file-extensions-validated</code>) file extensions validation
+                            </li>
+                            <li>
+                                Before (<code>bs.fs.change</code>) and after (<code>bs.fs.changed</code>) each change
+                            </li>
+                        </ul>
+                        <div class="form-group">
+                            <input id="demo7" type="file" name="demo" />
+                        </div>
+                        <script>
+                            $('#demo7')
+                                    .fileselect()
+                                    .on('bs.fs.changed', function (e, instance) {
+                                        alert('New file selected: ' + instance.$fileInput.val());
+                                    });
+                        </script>
+                    </div>
+                    <div class="col-md-6">
+                        <pre><code class="html">&lt;input id=&quot;demo7&quot; type=&quot;file&quot; name=&quot;demo&quot; /&gt;
+&lt;script&gt;
+    $('#demo7')
+            .fileselect()
+            .on('bs.fs.changed', function (e, instance) {
+                alert('New file selected: ' + instance.$fileInput.val());
+            });
 &lt;/script&gt;</code></pre>
                     </div>
                 </div>
