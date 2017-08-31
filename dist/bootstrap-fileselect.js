@@ -1,5 +1,5 @@
 /*!
- * Bootstrap Fileselect v1.4.0
+ * Bootstrap Fileselect v2.0.0
  * https://github.com/Neoflow/Bootstrap-Fileselect
  *
  * Copyright 2016-2017 Neoflow
@@ -13,6 +13,7 @@
     var Fileselect = function (fileInput, options) {
         this.$fileInput = $(fileInput);
         this.options = options;
+        this.userLanguage = 'en';
         this.$fileselect = $(this);
         this.metadata = this.$fileInput.data();
         this.$inputGroup = $('<div>').addClass('input-group');
@@ -37,6 +38,7 @@
                 }
             }
         };
+        this.init();
     };
     Fileselect.prototype = {
         defaults: {
@@ -48,13 +50,11 @@
             allowedFileExtensions: false,
             allowedNumberOfFiles: false,
             language: false,
-            validationCallback: function (m, $fileselect) {
+            validationCallback: function (m, instance) {
                 alert(m);
             }
         },
         init: function () {
-            this.$fileselect.trigger('bs.fs.initialize');
-
             this.config = this.loadConfig();
             this.translations = this.loadTranslation();
 
@@ -79,27 +79,27 @@
 
             this.$fileInput.on('change', $.proxy(this.changeEvent, this));
 
-            this.$fileselect.trigger('bs.fs.initialized');
-
-            return this;
+            return $(this);
         },
         changeEvent: function (e) {
-            this.$fileselect.trigger('bs.fs.change');
+            this.$fileInput.trigger('bs.fs.change', [this]);
 
             var files = this.$fileInput[0].files,
                     label = $.map(files, function (file) {
                         return file.name;
                     }).join(', ');
 
+            var result = false;
             if (this.validateNumberOfFiles(files) && this.valiateFileExtensions(files) && this.validateFileSize(files)) {
                 this.$labelInput.val(label);
-                return true;
+                result = true;
+            } else {
+                this.$fileInput.val(null);
             }
-            this.$fileInput.val(null);
 
-            this.$fileselect.trigger('bs.fs.changed');
+            this.$fileInput.trigger('bs.fs.changed', [this]);
 
-            return false;
+            return result;
         },
         loadConfig: function () {
             var config = $.extend({}, this.defaults, this.options, this.metadata);
@@ -114,19 +114,36 @@
                         return key;
                     });
 
-            if ($.inArray(userLanguage, translatedLanguages) === -1) {
-                userLanguage = 'en';
+            if ($.inArray(userLanguage, translatedLanguages) >= 0) {
+                this.userLanguage = userLanguage;
+            } else {
+                console.warn('Current user language has no translation. Switched to english as default language.')
             }
+
             return this.translations[userLanguage];
         },
         validateNumberOfFiles: function (files) {
+            this.$fileInput
+                    .trigger('bs.fs.validate', [this])
+                    .trigger('bs.fs.number-of-files-validate', [this]);
+
+            var result = true;
             if (this.config.allowedNumberOfFiles && files.length > parseInt(this.config.allowedNumberOfFiles)) {
                 this.config.validationCallback(this.translations.rules.numberOfFiles.replace('[num]', this.config.allowedNumberOfFiles), 'allowedNumberOfFiles', this);
-                return false;
+                result = false;
             }
-            return true;
+
+            this.$fileInput
+                    .trigger('bs.fs.validated', [this])
+                    .trigger('bs.fs.number-of-files-validated', [this]);
+
+            return result;
         },
         valiateFileExtensions: function (files) {
+            this.$fileInput
+                    .trigger('bs.fs.validate', [this])
+                    .trigger('bs.fs.file-extensions-validate', [this]);
+
             var result = true;
             if (this.config.allowedFileExtensions) {
                 $.each(files, $.proxy(function (i, file) {
@@ -134,33 +151,50 @@
                     if ($.inArray(fileExtension, this.config.allowedFileExtensions) === -1) {
                         this.config.validationCallback(this.translations.rules.fileExtensions.replace('[ext]', this.config.allowedFileExtensions.join(', ')), 'allowedFileExtensions', this);
                         result = false;
-                        return result;
+                        return;
                     }
                 }, this));
             }
+
+            this.$fileInput
+                    .trigger('bs.fs.validated', [this])
+                    .trigger('bs.fs.file-extensions-validated', [this]);
+
             return result;
         },
         validateFileSize: function (files) {
+            this.$fileInput
+                    .trigger('bs.fs.validate', [this])
+                    .trigger('bs.fs.file-size-validate', [this]);
+
             var result = true;
             if (this.config.allowedFileSize) {
                 $.each(files, $.proxy(function (i, file) {
                     if (file.size > this.config.allowedFileSize) {
                         this.config.validationCallback(this.translations.rules.fileSize.replace('[size]', Math.round(this.config.allowedFileSize / 1024 / 1024) + 'MB'), 'allowedFileSize', this);
                         result = false;
-                        return result;
+                        return;
                     }
                 }, this));
             }
+
+            this.$fileInput
+                    .trigger('bs.fs.validated', [this])
+                    .trigger('bs.fs.file-size-validated', [this]);
+
             return result;
-        }
+        },
+
     };
+
 
     Fileselect.defaults = Fileselect.prototype.defaults;
 
     $.fn.fileselect = function (options) {
-        return this.each(function () {
-            new Fileselect(this, options).init();
+        this.each(function () {
+            new Fileselect(this, options);
         });
+        return this;
     };
 
     window.Fileselect = Fileselect;
