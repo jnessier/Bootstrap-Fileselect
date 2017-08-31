@@ -27,4 +27,4 @@ Check out the [demo page](https://rawgit.com/Neoflow/Bootstrap-Fileselect/master
 for a look and feel and  the documentation of the plugin.
 
 ## Author
-Copyright © 2016-2017 [Neoflow](https://www.neoflow.ch) | Licensed under MIT
+Copyright © 2016-2017 [Neoflow](https://www.neoflow.ch) | Licensed under [MIT](https://github.com/Neoflow/Bootstrap-Fileselect/blob/master/LICENSE)
