@@ -7,7 +7,6 @@
  * Released under the MIT license
  * https://github.com/Neoflow/Bootstrap-Fileselect/blob/master/LICENSE.md
  */
-
 (function (window, $) {
 
     var Fileselect = function (fileInput, options) {
@@ -50,8 +49,8 @@
             allowedFileExtensions: false,
             allowedNumberOfFiles: false,
             language: false,
-            validationCallback: function (m, instance) {
-                alert(m);
+            validationCallback: function (message, instance) {
+                alert(message);
             }
         },
         init: function () {

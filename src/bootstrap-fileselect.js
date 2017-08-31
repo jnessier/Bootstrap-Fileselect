@@ -40,8 +40,8 @@
             allowedFileExtensions: false,
             allowedNumberOfFiles: false,
             language: false,
-            validationCallback: function (m, instance) {
-                alert(m);
+            validationCallback: function (message, instance) {
+                alert(message);
             }
         },
         init: function () {

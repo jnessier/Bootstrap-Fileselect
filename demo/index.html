@@ -227,9 +227,9 @@
                         <script>
                             $('#demo6').fileselect({
                                 allowedFileExtensions: ['xyz'],
-                                validationCallback: function (m, type, instance) {
+                                validationCallback: function (message, type, instance) {
                                     instance.$inputGroup
-                                            .after('<span class="small text-danger">' + m + '</span>');
+                                            .after('<span class="small text-danger">' + message + '</span>');
                                 }
                             });
                         </script>
@@ -299,7 +299,7 @@
 
             <footer>
                 <hr />
-                <p class="small">Copyright &copy; 2016-2017 <a href="https://www.neoflow.ch">Neoflow</a> | Licensed under MIT</p>
+                <p class="small">Copyright &copy; 2016-2017 <a href="https://www.neoflow.ch" target="_blank">Neoflow</a> | Licensed under <a href="https://github.com/Neoflow/Bootstrap-Fileselect/blob/master/LICENSE" target="_blank">MIT</a></p>
             </footer>
         </div><!-- /.container -->
     </body>
