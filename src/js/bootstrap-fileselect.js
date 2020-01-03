@@ -6,13 +6,10 @@
         this.userLanguage = 'en';
         this.$fileselect = $(this);
         this.metadata = this.$fileInput.data();
-        this.$inputGroup = $('<div>').addClass('input-group');
-        this.$inputGroupBtn = $('<label>').addClass('input-group-btn');
-        this.$browseBtn = $('<span>');
-        this.$labelInput = $('<input>').attr('type', 'text').attr('readonly', true).addClass('form-control');
+        this.$inputGroup = $('<div>').addClass('custom-file');
+        this.$labelInput = $('<label>').addClass('custom-file-label');
         this.translations = {
             'en': {
-                'browse': 'Browse',
                 'rules': {
                     'numberOfFiles': 'The number of uploadable files is limited to [num] file(s)',
                     'fileExtensions': 'The files are restricted to following file extensions: [ext]',
@@ -20,7 +17,6 @@
                 }
             },
             'de': {
-                'browse': 'Durchsuchen',
                 'rules': {
                     'numberOfFiles': 'Die Anzahl der hochladbaren Dateien ist limitiert auf [num] Datei(en)',
                     'fileExtensions': 'Die Dateien sind eingeschränkt auf folgende Dateierweiterungen: [ext]',
@@ -49,23 +45,11 @@
             this.translations = this.loadTranslation();
 
             this.$fileInput
-                    .hide()
-                    .after(this.$inputGroup);
+                .addClass('custom-file-input')
+                .before(this.$inputGroup);
 
-            if (this.config.browseBtnPosition === 'left') {
-                this.$inputGroup.append(this.$inputGroupBtn, this.$labelInput);
-            } else {
-                this.$inputGroup.append(this.$labelInput, this.$inputGroupBtn);
-            }
-
-            this.$inputGroupBtn
-                    .append(this.$browseBtn)
-                    .append(this.$fileInput)
-                    .css('margin-bottom', 0);
-
-            this.$browseBtn
-                    .addClass(this.config.browseBtnClass)
-                    .text(this.translations.browse);
+            this.$inputGroup
+                .append(this.$fileInput, this.$labelInput);
 
             this.$fileInput.on('change', $.proxy(this.changeEvent, this));
 
@@ -81,10 +65,10 @@
 
             var result = false;
             if (this.validateNumberOfFiles(files) && this.valiateFileExtensions(files) && this.validateFileSize(files)) {
-                this.$labelInput.val(label);
+                this.$labelInput.text(label);
                 result = true;
             } else {
-                this.$fileInput.val(null);
+               this.$fileInput.val(null);
             }
 
             this.$fileInput.trigger('bs.fs.changed', [this]);
