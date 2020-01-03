@@ -1,6 +1,7 @@
 {
     "name": "bootstrap-fileselect",
     "version": "2.0.0",
+    "scripts": {},
     "keywords": [
         "file select",
         "input file",
@@ -8,16 +9,37 @@
         "bootstrap",
         "jquery"
     ],
-    "author": "Neoflow",
+    "publishConfig": {
+        "registry": "https://npm.pkg.github.com/"
+    },
+    "author": "Jonathan Nessier, Neoflow",
     "license": "MIT",
     "contributors": [],
+    "buildOpts": {
+        "common": {
+            "sourceHeader": "./src/source-header.txt"
+        },
+        "jsBuild": {
+            "src": "./src/js/bootstrap-fileselect.js",
+            "dest":  "./dist",
+            "concatName": "bootstrap-fileselect.js"
+        },
+        "jsMinify": {
+            "src":  "./dist/bootstrap-fileselect.js",
+            "dest": "./dist",
+            "renameSuffix": ".min"
+        },
+        "srcWatch": {
+            "path": "./src/js/**/*.js"
+        }
+    },
     "devDependencies": {
         "gulp": "^4.0.2",
-        "gulp-util": "^3.0.8",
+        "gulp-concat": "^2.6.1",
         "gulp-inject-string": "^1.1.2",
-        "gulp-uglify-es": "^1.0.4",
-        "gulp-rename": "^1.4.0",
-        "run-sequence": "^2.2.1"
+        "gulp-replace": "^1.0.0",
+        "gulp-terser": "^1.2.0",
+        "gulp-rename": "^2.0.0"
     },
-    "dependencies": {}
+    "dependencies": {    }
 }
