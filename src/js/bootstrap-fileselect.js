@@ -99,7 +99,7 @@
             return config;
         },
         loadTranslation: function () {
-            var userLanguage = this.config.language || navigator.language || navigator.userLanguage,
+            var userLanguage = (this.config.language || navigator.language || navigator.userLanguage).substring(0,2).toLowerCase(),
                     translatedLanguages = $.map(this.translations, function (translations, key) {
                         return key;
                     });
@@ -107,10 +107,10 @@
             if ($.inArray(userLanguage, translatedLanguages) >= 0) {
                 this.userLanguage = userLanguage;
             } else {
-                console.warn('Current user language has no translation. Switched to english as default language.')
+                console.info('User language (' + userLanguage + ') has no translation. Switched to default language (' + this.userLanguage + ').')
             }
 
-            return this.translations[userLanguage];
+            return this.translations[this.userLanguage];
         },
         validateNumberOfFiles: function (files) {
             this.$fileInput

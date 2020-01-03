@@ -1,5 +1,5 @@
 /*!
- * Bootstrap Fileselect v2.0.0
+ * Bootstrap Fileselect v2.1.0
  * (c) 2016-2020 Jonathan Nessier, Neoflow
  * Licensed under MIT (https://github.com/Neoflow/Bootstrap-Fileselect/blob/master/LICENSE)
  */
@@ -104,7 +104,7 @@
             return config;
         },
         loadTranslation: function () {
-            var userLanguage = this.config.language || navigator.language || navigator.userLanguage,
+            var userLanguage = (this.config.language || navigator.language || navigator.userLanguage).substring(0,2).toLowerCase(),
                     translatedLanguages = $.map(this.translations, function (translations, key) {
                         return key;
                     });
@@ -112,10 +112,10 @@
             if ($.inArray(userLanguage, translatedLanguages) >= 0) {
                 this.userLanguage = userLanguage;
             } else {
-                console.warn('Current user language has no translation. Switched to english as default language.')
+                console.info('User language (' + userLanguage + ') has no translation. Switched to default language (' + this.userLanguage + ').')
             }
 
-            return this.translations[userLanguage];
+            return this.translations[this.userLanguage];
         },
         validateNumberOfFiles: function (files) {
             this.$fileInput
