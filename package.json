@@ -1,6 +1,6 @@
 {
     "name": "bootstrap-fileselect",
-    "version": "2.0.0",
+    "version": "2.1.0",
     "scripts": {},
     "keywords": [
         "file select",
@@ -21,11 +21,11 @@
         },
         "jsBuild": {
             "src": "./src/js/bootstrap-fileselect.js",
-            "dest":  "./dist",
+            "dest": "./dist",
             "concatName": "bootstrap-fileselect.js"
         },
         "jsMinify": {
-            "src":  "./dist/bootstrap-fileselect.js",
+            "src": "./dist/bootstrap-fileselect.js",
             "dest": "./dist",
             "renameSuffix": ".min"
         },
@@ -41,5 +41,5 @@
         "gulp-terser": "^1.2.0",
         "gulp-rename": "^2.0.0"
     },
-    "dependencies": {    }
+    "dependencies": {}
 }
