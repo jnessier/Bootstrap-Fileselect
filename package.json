@@ -1,6 +1,6 @@
 {
     "name": "bootstrap-fileselect",
-    "version": "2.1.0",
+    "version": "2.1.1",
     "scripts": {},
     "keywords": [
         "file select",
@@ -9,9 +9,7 @@
         "bootstrap",
         "jquery"
     ],
-    "publishConfig": {
-        "registry": "https://npm.pkg.github.com/"
-    },
+    "scope": "neoflow",
     "author": "Jonathan Nessier, Neoflow",
     "license": "MIT",
     "contributors": [],
