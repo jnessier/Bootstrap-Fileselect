@@ -13,6 +13,9 @@
     "author": "Jonathan Nessier, Neoflow",
     "license": "MIT",
     "contributors": [],
+    "publishConfig": {
+        "access": "public"
+    },
     "buildOpts": {
         "common": {
             "sourceHeader": "./src/source-header.txt"
