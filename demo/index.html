@@ -270,7 +270,7 @@
 &lt;script&gt;
     $('#demo6').fileselect({
         allowedFileExtensions: ['xyz'],
-        validationCallback: function (m, type, instance) {
+        validationCallback: function (message, type, instance) {
             instance.$inputGroup.next('span').text(message);
         }
     });
