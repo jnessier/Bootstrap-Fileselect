@@ -15,7 +15,7 @@
                 'browse': 'Browse',
                 'rules': {
                     'numberOfFiles': 'The number of uploadable files is limited to [num] file(s)',
-                    'fileExtensions': 'The files are restricted to following file extensions: [ext]',
+                    'fileExtensions': 'The files are restricted to the following file extensions: [ext]',
                     'fileSize': 'The file size is limited to [size]',
                 }
             },
