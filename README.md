@@ -8,8 +8,7 @@ with some kind of validation and translation support.
 * Bootstrap 4.0.0 or higher
 
 ## Installation
-Download the latest release [here](https://github.com/Neoflow/Bootstrap-Fileselect/releases) and use start using it like in the code example
-below.
+Download the latest release [here](https://github.com/Neoflow/Bootstrap-Fileselect/releases) and start using it like in the code example below.
 ```html
 <script src="path/to/js/bootstrap-fileselect.js"></script>
 <script>
