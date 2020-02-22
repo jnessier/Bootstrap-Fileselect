@@ -1,7 +1,13 @@
 {
     "name": "@neoflow/bootstrap-fileselect",
     "version": "3.0.0",
-    "scripts": {},
+    "scripts": {
+        "js:build": "gulp js:build",
+        "js:minify": "gulp js:minify",
+        "js:rebuild": "gulp js:rebuild",
+        "src:rebuild": "gulp src:rebuild",
+        "src:watch": "gulp src:watch"
+    },
     "keywords": [
         "file select",
         "input file",
