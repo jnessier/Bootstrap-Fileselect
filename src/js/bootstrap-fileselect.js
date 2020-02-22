@@ -1,6 +1,6 @@
 (function (window, $) {
 
-    var Fileselect = function (fileInput, options) {
+    const Fileselect = function (fileInput, options) {
         this.$fileInput = $(fileInput);
         this.options = options;
         this.userLanguage = 'en';
@@ -62,17 +62,18 @@
         changeEvent: function (e) {
             this.$fileInput.trigger('bs.fs.change', [this]);
 
-            var files = this.$fileInput[0].files,
-                    label = $.map(files, function (file) {
-                        return file.name;
-                    }).join(', ');
+            const files = this.$fileInput[0].files,
+                label = $.map(files, function (file) {
+                    return file.name;
+                }).join(', ');
 
-            var result = false;
+            let result = false;
+
             if (this.validateNumberOfFiles(files) && this.valiateFileExtensions(files) && this.validateFileSize(files)) {
                 this.$labelInput.text(label);
                 result = true;
             } else {
-               this.$fileInput.val(null);
+                this.$fileInput.val(null);
             }
 
             this.$fileInput.trigger('bs.fs.changed', [this]);
@@ -80,7 +81,7 @@
             return result;
         },
         loadConfig: function () {
-            var config = $.extend({}, this.defaults, this.options, this.metadata);
+            let config = $.extend({}, this.defaults, this.options, this.metadata);
             if (typeof config.allowedFileExtensions === 'string') {
                 config.allowedFileExtensions = config.allowedFileExtensions.split(',');
             }
@@ -91,10 +92,10 @@
                 this.translations[language] = translations
             }, this));
 
-            var userLanguage = (this.config.language || navigator.language || navigator.userLanguage).substring(0,2).toLowerCase(),
-                    translatedLanguages = $.map(this.translations, function (translations, key) {
-                        return key;
-                    });
+            let userLanguage = (this.config.language || navigator.language || navigator.userLanguage).substring(0, 2).toLowerCase(),
+                translatedLanguages = $.map(this.translations, function (translations, key) {
+                    return key;
+                });
 
             if ($.inArray(userLanguage, translatedLanguages) >= 0) {
                 this.userLanguage = userLanguage;
@@ -106,27 +107,27 @@
         },
         validateNumberOfFiles: function (files) {
             this.$fileInput
-                    .trigger('bs.fs.validate', [this])
-                    .trigger('bs.fs.number-of-files-validate', [this]);
+                .trigger('bs.fs.validate', [this])
+                .trigger('bs.fs.number-of-files-validate', [this]);
 
-            var result = true;
+            let result = true;
             if (this.config.allowedNumberOfFiles && files.length > parseInt(this.config.allowedNumberOfFiles)) {
                 this.config.validationCallback(this.translations.rules.numberOfFiles.replace('[num]', this.config.allowedNumberOfFiles), 'allowedNumberOfFiles', this);
                 result = false;
             }
 
             this.$fileInput
-                    .trigger('bs.fs.validated', [this])
-                    .trigger('bs.fs.number-of-files-validated', [this]);
+                .trigger('bs.fs.validated', [this])
+                .trigger('bs.fs.number-of-files-validated', [this]);
 
             return result;
         },
         valiateFileExtensions: function (files) {
             this.$fileInput
-                    .trigger('bs.fs.validate', [this])
-                    .trigger('bs.fs.file-extensions-validate', [this]);
+                .trigger('bs.fs.validate', [this])
+                .trigger('bs.fs.file-extensions-validate', [this]);
 
-            var result = true;
+            let result = true;
             if (this.config.allowedFileExtensions) {
                 $.each(files, $.proxy(function (i, file) {
                     var fileExtension = file.name.replace(/^.*\./, '').toLowerCase();
@@ -139,17 +140,17 @@
             }
 
             this.$fileInput
-                    .trigger('bs.fs.validated', [this])
-                    .trigger('bs.fs.file-extensions-validated', [this]);
+                .trigger('bs.fs.validated', [this])
+                .trigger('bs.fs.file-extensions-validated', [this]);
 
             return result;
         },
         validateFileSize: function (files) {
             this.$fileInput
-                    .trigger('bs.fs.validate', [this])
-                    .trigger('bs.fs.file-size-validate', [this]);
+                .trigger('bs.fs.validate', [this])
+                .trigger('bs.fs.file-size-validate', [this]);
 
-            var result = true;
+            let result = true;
             if (this.config.allowedFileSize) {
                 $.each(files, $.proxy(function (i, file) {
                     if (file.size > this.config.allowedFileSize) {
@@ -161,8 +162,8 @@
             }
 
             this.$fileInput
-                    .trigger('bs.fs.validated', [this])
-                    .trigger('bs.fs.file-size-validated', [this]);
+                .trigger('bs.fs.validated', [this])
+                .trigger('bs.fs.file-size-validated', [this]);
 
             return result;
         },
