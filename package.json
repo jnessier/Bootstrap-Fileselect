@@ -41,7 +41,6 @@
         }
     },
     "devDependencies": {
-        "@types/node": "^13.11.1",
         "gulp": "^4.0.2",
         "gulp-concat": "^2.6.1",
         "gulp-inject-string": "^1.1.2",
