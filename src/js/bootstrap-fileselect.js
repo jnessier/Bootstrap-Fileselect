@@ -48,6 +48,10 @@
 
                 this.$labelInput.attr('data-browse', this.translations.browse);
 
+                this.$labelInput.css({
+                    'overflow': 'hidden'
+                });
+
                 if (this.$fileInput[0].hasAttribute("multiple")) {
                     this.$labelInput.text(this.translations.chooseFiles);
                 } else {
@@ -69,7 +73,7 @@
 
             let result = false;
 
-            if (this.validateNumberOfFiles(files) && this.valiateFileExtensions(files) && this.validateFileSize(files)) {
+            if (this.validateNumberOfFiles(files) && this.validateFileExtensions(files) && this.validateFileSize(files)) {
                 this.$labelInput.text(label);
                 result = true;
             } else {
@@ -122,7 +126,7 @@
 
             return result;
         },
-        valiateFileExtensions: function (files) {
+        validateFileExtensions: function (files) {
             this.$fileInput
                 .trigger('bs.fs.validate', [this])
                 .trigger('bs.fs.file-extensions-validate', [this]);

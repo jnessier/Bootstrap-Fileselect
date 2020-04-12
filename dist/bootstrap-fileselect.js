@@ -1,5 +1,5 @@
 /*!
- * Bootstrap Fileselect v3.0.0
+ * Bootstrap Fileselect v3.1.0
  * (c) 2016-2020 Jonathan Nessier, Neoflow
  * Licensed under MIT (https://github.com/Neoflow/Bootstrap-Fileselect/blob/master/LICENSE)
  */
@@ -35,6 +35,7 @@
             allowedNumberOfFiles: false,
             language: false,
             translations: {},
+            textOverflow: 'hidden',
             validationCallback: function (message, instance) {
                 alert(message);
             }
@@ -52,6 +53,10 @@
                     .append(this.$fileInput, this.$labelInput);
 
                 this.$labelInput.attr('data-browse', this.translations.browse);
+
+                this.$labelInput.css({
+                    'text-overflow': this.config.textOverflow
+                });
 
                 if (this.$fileInput[0].hasAttribute("multiple")) {
                     this.$labelInput.text(this.translations.chooseFiles);
