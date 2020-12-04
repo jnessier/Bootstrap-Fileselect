@@ -1,5 +1,5 @@
 /*!
- * Bootstrap Fileselect v3.1.1
+ * Bootstrap Fileselect v3.1.2
  * (c) 2016-2020 Jonathan Nessier, Neoflow
  * Licensed under MIT (https://github.com/Neoflow/Bootstrap-Fileselect/blob/master/LICENSE)
  */
