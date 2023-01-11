@@ -1,3 +1,8 @@
+# This project is no longer maintained.
+Please use other solutions for filesects with Bootstrap.
+
+------------------------------------------------------------
+
 # Bootstrap-Fileselect
 Bootstrap Fileselect is a jQuery plugin, which creates bootstrap-styled form 
 controls for file uploads, also known as file selects or file input fields, and 
